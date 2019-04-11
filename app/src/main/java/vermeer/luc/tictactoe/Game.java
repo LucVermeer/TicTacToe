@@ -20,9 +20,21 @@ public class Game {
         gameState = GameState.IN_PROGRESS;
     }
 
+    public TileState[][] getBoard() {
+        return board;
+    }
+
+    public void setBoard(TileState[][] newBoard){
+        this.board = newBoard;
+    }
+
     public GameState getGameState() {
-        GameState won = gameState;
-        return won;
+        GameState returnState = gameState;
+        return returnState;
+    }
+
+    public void setGameState(GameState gameState) {
+        this.gameState = gameState;
     }
 
     public TileState choose(int row, int column) {

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -16,6 +17,46 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         game = new Game();
+        if (savedInstanceState != null) {
+            String[] ids = {"b00", "b01", "b02",
+                            "b10", "b11", "b12",
+                            "b20", "b21", "b22", };
+            for (String id : ids){
+                int r_id = getResources().getIdentifier(id, "id", getPackageName());
+                Button tile = (Button) findViewById(r_id);
+                tile.setText(savedInstanceState.getString(id));
+            }
+
+//        Restore game text
+            TextView gameText = (TextView) findViewById(R.id.gameText);
+            gameText.setText(savedInstanceState.getString("gameText"));
+        }
+//        Restore board
+
+//        Restore gamestate
+//        game.setGameState(savedInstanceState.getSerializable("gameState"));
+    }
+
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState); // always call super
+//        Take tile text
+        String[] ids = {"b00", "b01", "b02",
+                        "b10", "b11", "b12",
+                        "b20", "b21", "b22", };
+        for (String id : ids){
+            int r_id = getResources().getIdentifier(id, "id", getPackageName());
+            Button tile = (Button) findViewById(r_id);
+            outState.putString(id, tile.getText().toString());
+        }
+//        Take game text
+        TextView gameText = (TextView) findViewById(R.id.gameText);
+        outState.putString("gameText", gameText.getText().toString());
+
+//        Take tile state
+//        outState.putSerializable("board", game.getBoard());
+
+//        Take game state
+//        outState.putSerializable("gameState", game.getGameState());
     }
 
     public void resetClicked() {
