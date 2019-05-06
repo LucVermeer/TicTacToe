@@ -21,7 +21,7 @@ public class Game {
     }
 
     public TileState[][] getBoard() {
-        return board;
+        return this.board;
     }
 
     public void setBoard(TileState[][] newBoard){
@@ -29,8 +29,7 @@ public class Game {
     }
 
     public GameState getGameState() {
-        GameState returnState = gameState;
-        return returnState;
+        return this.gameState;
     }
 
     public void setGameState(GameState gameState) {

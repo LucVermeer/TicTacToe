@@ -56,10 +56,10 @@ public class MainActivity extends AppCompatActivity {
 //        outState.putSerializable("board", game.getBoard());
 
 //        Take game state
-//        outState.putSerializable("gameState", game.getGameState());
+        outState.putSerializable("gameState", game.getGameState());
     }
 
-    public void resetClicked() {
+    public void resetClicked(View view) {
         setContentView(R.layout.activity_main);
         game = new Game();
     }
